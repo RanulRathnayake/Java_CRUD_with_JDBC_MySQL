@@ -32,6 +32,10 @@ public class CrudApp {
                     case 3 -> updateUser(conn, sc);
                     case 4 -> deleteUser(conn, sc);
                     case 5 -> {
+                        if (conn != null && !conn.isClosed()) {
+                            conn.close();
+                            System.out.println("🔒 Database connection closed.");
+                        }
                         System.out.println("👋 Exiting...");
                         return;
                     }
